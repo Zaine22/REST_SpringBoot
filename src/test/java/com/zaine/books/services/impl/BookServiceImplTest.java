@@ -1,5 +1,7 @@
 package com.zaine.books.services.impl;
 
+import static com.zaine.books.TestData.testBook;
+import static com.zaine.books.TestData.testBookEntity;
 import com.zaine.books.domain.Book;
 import com.zaine.books.domain.BookEntity;
 import com.zaine.books.repositories.BookRepository;
@@ -25,17 +27,9 @@ public class BookServiceImplTest {
 
     @Test
     public void testThatBookIsSaved(){
-        final Book book = Book.builder()
-                .isbn("123456")
-                .author("zaine")
-                .title("kyawkokozin")
-                .build();
+        final Book book = testBook();
 
-        final BookEntity bookEntity = BookEntity.builder()
-                .isbn("123456")
-                .author("zaine")
-                .title("kyawkokozin")
-                .build();
+        final BookEntity bookEntity = testBookEntity();
 
         when(bookRepository.save(eq(bookEntity))).thenReturn(bookEntity);
 
